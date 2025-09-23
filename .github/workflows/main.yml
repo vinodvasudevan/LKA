@@ -1,0 +1,465 @@
+
+
+
+
+
+
+https://github.com/cfzd/Ultra-Fast-Lane-Detection
+Ultra-Fast-Lane-Detection, is a popular open-source project focused on real-time lane detection using deep learning. It aims to achieve high-speed and accurate lane detection, which is crucial for applications like autonomous driving and advanced driver-assistance systems (ADAS).
+1. Overview of the Project
+•	Goal: The project focuses on ultra-fast lane detection, prioritizing speed and efficiency while maintaining accuracy.
+•	Key Features:
+o	Real-time performance.
+o	Lightweight model architecture.
+o	State-of-the-art results on lane detection benchmarks.
+2. Repository Structure
+The repository typically includes the following:
+•	Code: Implementation of the model, training, and evaluation scripts.
+•	Pretrained Models: Weights for the model trained on popular datasets like CULane and TuSimple.
+•	Datasets: Instructions for downloading and preparing datasets.
+•	Results: Visualizations and performance metrics.
+ Key Components to Explore
+•	Model Architecture:
+o	The model is designed to be lightweight and efficient, often using techniques like row-wise classification or anchor-based methods.
+o	Check the model directory for the implementation details.
+•	Training Pipeline:
+o	Explore the training scripts to understand how the model is trained.
+o	Look for hyperparameters, loss functions, and optimization techniques.
+•	Evaluation:
+o	The repository likely includes scripts for evaluating the model on standard datasets.
+o	Metrics like F1 score, accuracy, and inference speed are commonly used.
+Datasets
+•	The project is typically evaluated on datasets like:
+o	CULane: A large-scale lane detection dataset.
+o	TuSimple: A popular benchmark for lane detection.
+•	Check the data directory or documentation for instructions on downloading and preprocessing these datasets.
+Pretrained Models
+•	Pretrained models are often provided for quick testing and deployment.
+•	Look for a pretrained or weights directory to download and use these models.
+
+Running the Code
+•	Follow the README.md file for setup instructions.
+•	Common steps include:
+1.	Cloning the repository.
+2.	Installing dependencies (e.g., PyTorch, OpenCV).
+3.	Downloading datasets and pretrained models.
+4.	Running training or inference scripts.
+Performance and Results
+•	The repository likely includes benchmarks comparing the model’s performance to other state-of-the-art methods.
+•	Look for metrics like inference speed (FPS) and accuracy on standard datasets.
+
+ Customization and Extensions
+•	If you want to adapt the model for your own use case, consider:
+o	Fine-tuning on a custom dataset.
+o	Modifying the architecture for specific requirements.
+o	Optimizing for different hardware (e.g., edge devices).
+
+Resources and References
+•	The repository may include links to research papers or related projects.
+•	For example, the original paper for this project might be cited in the README.md.
+
+
+Steps done
+1.	Installed git
+2.	Cloned git clone https://github.com/cfzd/Ultra-Fast-Lane-Detection.git
+3.	Create a Python Virtual Environment (optional but recommended):
+4.	C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python3 -m venv ufld_env
+5.	C:\Projects\LKA3\Ultra-Fast-Lane-Detection>ufld_env\Scripts\activate
+6.	Requirement txt say to install
+a.	opencv-python
+b.	tqdm
+c.	tensorboard
+d.	addict
+e.	scikit-learn
+f.	pathspec
+7.	tried pip install -r requirements.txt
+8.	 
+9.	 
+10.	All installed
+11.	 
+
+Step 3: Download Datasets
+The model is typically trained on datasets like CULane or TuSimple. Follow these steps to download and prepare the datasets:
+1.	Download the Dataset:
+o	Visit the official dataset websites:
+	CULane
+	TuSimple
+o	Download the dataset and extract it to a folder.
+2.	Prepare the Dataset:
+o	The repository should have instructions for preparing the dataset (e.g., creating a file structure or annotation files).
+o	Look for a data directory or a script to preprocess the dataset.
+o	Visited CULane Dataset
+	Description	
+CULane is a large scale challenging dataset for academic research on traffic lane detection. It is collected by cameras mounted on six different vehicles driven by different drivers in Beijing. More than 55 hours of videos were collected and 133,235 frames were extracted. Data examples are shown above. We have divided the dataset into 88880 for training set, 9675 for validation set, and 34680 for test set. The test set is divided into normal and 8 challenging categories, which correspond to the 9 examples above.
+	
+	For each frame, we manually annotate the traffic lanes with cubic splines. For cases where lane markings are occluded by vehicles or are unseen, we still annotate the lanes according to the context, as shown in (2)(4). We also hope that algorithms could distinguish barriers on the road, like the one in (1). Thus the lanes on the other side of the barrier are not annotated. In this dataset we focus our attention on the detection of four lane markings, which are paid most attention to in real applications. Other lane markings are not annotated.
+	Downloaded CULane - Google Drive
+o	
+
+
+Install missing python packages
+ 
+
+Dependency error show and installed
+(ufld_env) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python train.py --config configs/culane.py
+Traceback (most recent call last):
+  File "train.py", line 1, in <module>
+    import torch, os, datetime
+ModuleNotFoundError: No module named 'torch'
+
+(ufld_env) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>pip install torch torchvision torchaudio
+Collecting torch
+  Downloading torch-1.13.1-cp37-cp37m-win_amd64.whl (162.6 MB)
+     |████████████████████████████████| 162.6 MB 1.3 MB/s
+Collecting torchvision
+  Downloading torchvision-0.14.1-cp37-cp37m-win_amd64.whl (1.1 MB)
+     |████████████████████████████████| 1.1 MB 6.8 MB/s
+Collecting torchaudio
+  Downloading torchaudio-0.13.1-cp37-cp37m-win_amd64.whl (2.0 MB)
+     |████████████████████████████████| 2.0 MB ...
+Requirement already satisfied: typing-extensions in c:\projects\lka3\ultra-fast-lane-detection\ufld_env\lib\site-packages (from torch) (4.7.1)
+Requirement already satisfied: numpy in c:\projects\lka3\ultra-fast-lane-detection\ufld_env\lib\site-packages (from torchvision) (1.21.6)
+Requirement already satisfied: requests in c:\projects\lka3\ultra-fast-lane-detection\ufld_env\lib\site-packages (from torchvision) (2.31.0)
+Collecting pillow!=8.3.*,>=5.3.0
+  Using cached Pillow-9.5.0-cp37-cp37m-win_amd64.whl (2.5 MB)
+Requirement already satisfied: certifi>=2017.4.17 in c:\projects\lka3\ultra-fast-lane-detection\ufld_env\lib\site-packages (from requests->torchvision) (2025.1.31)
+Requirement already satisfied: idna<4,>=2.5 in c:\projects\lka3\ultra-fast-lane-detection\ufld_env\lib\site-packages (from requests->torchvision) (3.10)
+Requirement already satisfied: urllib3<3,>=1.21.1 in c:\projects\lka3\ultra-fast-lane-detection\ufld_env\lib\site-packages (from requests->torchvision) (2.0.7)
+Requirement already satisfied: charset-normalizer<4,>=2 in c:\projects\lka3\ultra-fast-lane-detection\ufld_env\lib\site-packages (from requests->torchvision) (3.4.1)
+Installing collected packages: torch, pillow, torchvision, torchaudio
+Successfully installed pillow-9.5.0 torch-1.13.1 torchaudio-0.13.1 torchvision-0.14.1
+WARNING: You are using pip version 20.1.1; however, version 24.0 is available.
+You should consider upgrading via the 'c:\projects\lka3\ultra-fast-lane-detection\ufld_env\scripts\python.exe -m pip install --upgrade pip' command.
+
+(ufld_env) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>
+
+Another error came
+(ufld_env) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python train.py --config configs/culane.py
+Traceback (most recent call last):
+  File "train.py", line 7, in <module>
+    from utils.dist_utils import dist_print, dist_tqdm, is_main_process, DistSummaryWriter
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\utils\dist_utils.py", line 132, in <module>
+    from torch.utils.tensorboard import SummaryWriter
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env\lib\site-packages\torch\utils\tensorboard\__init__.py", line 12, in <module>
+    from .writer import FileWriter, SummaryWriter  # noqa: F401
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env\lib\site-packages\torch\utils\tensorboard\writer.py", line 26, in <module>
+    from .summary import (
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env\lib\site-packages\torch\utils\tensorboard\summary.py", line 10, in <module>
+    from six.moves import range
+ModuleNotFoundError: No module named 'six'
+
+pip install six
+Another error came
+(ufld_env) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python train.py --config configs/culane.py
+usage: train.py [-h] [--local_rank LOCAL_RANK] [--dataset DATASET]
+                [--data_root DATA_ROOT] [--epoch EPOCH]
+                [--batch_size BATCH_SIZE] [--optimizer OPTIMIZER]
+                [--learning_rate LEARNING_RATE] [--weight_decay WEIGHT_DECAY]
+                [--momentum MOMENTUM] [--scheduler SCHEDULER]
+                [--steps STEPS [STEPS ...]] [--gamma GAMMA] [--warmup WARMUP]
+                [--warmup_iters WARMUP_ITERS] [--backbone BACKBONE]
+                [--griding_num GRIDING_NUM] [--use_aux USE_AUX]
+                [--sim_loss_w SIM_LOSS_W] [--shp_loss_w SHP_LOSS_W]
+                [--note NOTE] [--log_path LOG_PATH] [--finetune FINETUNE]
+                [--resume RESUME] [--test_model TEST_MODEL]
+                [--test_work_dir TEST_WORK_DIR] [--num_lanes NUM_LANES]
+                [--auto_backup]
+                config
+train.py: error: unrecognized arguments: --config
+
+tried python train.py configs/culane.py
+
+Another error came
+(ufld_env) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python train.py configs/culane.py
+Traceback (most recent call last):
+  File "train.py", line 100, in <module>
+    work_dir = get_work_dir(cfg)
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\utils\common.py", line 107, in get_work_dir
+    work_dir = os.path.join(cfg.log_path, now + hyper_param_str + cfg.note)
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.7_3.7.2544.0_x64__qbz5n2kfra8p0\lib\ntpath.py", line 76, in join
+    path = os.fspath(path)
+TypeError: expected str, bytes or os.PathLike object, not NoneType
+
+
+Created a log folder 
+
+Now got another error
+(ufld_env) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python train.py configs/culane.py
+[2025/02/02 10:52:26] start training...
+Config (path: configs/culane.py): {'dataset': 'CULane', 'data_root': 'C:\\Projects\\LKA3\\Ultra-Fast-Lane-Detection\\Dataset\\CULane', 'epoch': 50, 'batch_size': 32, 'optimizer': 'SGD', 'learning_rate': 0.1, 'weight_decay': 0.0001, 'momentum': 0.9, 'scheduler': 'multi', 'steps': [25, 38], 'gamma': 0.1, 'warmup': 'linear', 'warmup_iters': 695, 'use_aux': True, 'griding_num': 200, 'backbone': '18', 'sim_loss_w': 0.0, 'shp_loss_w': 0.0, 'note': '', 'log_path': 'C:\\Projects\\LKA3\\Ultra-Fast-Lane-Detection\\logs', 'finetune': None, 'resume': None, 'test_model': None, 'test_work_dir': None, 'num_lanes': 4}
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env\lib\site-packages\torchvision\models\_utils.py:209: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  f"The parameter '{pretrained_param}' is deprecated since 0.13 and may be removed in the future, "
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=ResNet18_Weights.IMAGENET1K_V1`. You can also use `weights=ResNet18_Weights.DEFAULT` to get the most up-to-date weights.
+  warnings.warn(msg)
+Downloading: "https://download.pytorch.org/models/resnet18-f37072fd.pth" to C:\Users\vinod/.cache\torch\hub\checkpoints\resnet18-f37072fd.pth
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 44.7M/44.7M [00:01<00:00, 36.0MB/s]
+Traceback (most recent call last):
+  File "train.py", line 116, in <module>
+    net = parsingNet(pretrained = True, backbone=cfg.backbone,cls_dim = (cfg.griding_num+1,cls_num_per_lane, cfg.num_lanes),use_aux=cfg.use_aux).cuda()
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env\lib\site-packages\torch\nn\modules\module.py", line 749, in cuda
+    return self._apply(lambda t: t.cuda(device))
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env\lib\site-packages\torch\nn\modules\module.py", line 641, in _apply
+    module._apply(fn)
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env\lib\site-packages\torch\nn\modules\module.py", line 641, in _apply
+    module._apply(fn)
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env\lib\site-packages\torch\nn\modules\module.py", line 664, in _apply
+    param_applied = fn(param)
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env\lib\site-packages\torch\nn\modules\module.py", line 749, in <lambda>
+    return self._apply(lambda t: t.cuda(device))
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env\lib\site-packages\torch\cuda\__init__.py", line 221, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+
+
+The error AssertionError: Torch not compiled with CUDA enabled indicates that your PyTorch installation does not have CUDA support. This means that PyTorch cannot use your GPU for computations, and the .cuda() method (which moves tensors to the GPU) is failing.
+
+Step 1: Verify CUDA Availability
+First, check if your system has a compatible NVIDIA GPU and CUDA installed:
+1.	Check for NVIDIA GPU:
+o	Open the Device Manager (press Win + X and select Device Manager).
+o	Look for Display adapters and check if you have an NVIDIA GPU listed.
+o	 
+2.	Check CUDA Version:
+o	Open a terminal and run: nvcc --version
+o	(ufld_env) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>nvcc --version
+o	'nvcc' is not recognized as an internal or external command,
+o	operable program or batch file.
+
+Went here
+CUDA Toolkit 12.8 Downloads | NVIDIA Developer
+Downloaded CUDA from NVIDIA
+Installed CUDA cuda_12.8.0_571.96_windows
+ 
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+Noted that 12.8 is latest and there is no compatible torchvision and audio not available. Reverting to 11.8
+
+It is not working with pip. 
+
+Trying to install Conda first
+curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe -o .\miniconda.exe
+start /wait "" .\miniconda.exe /S
+del .\miniconda.exe
+
+ 
+
+ 
+
+
+
+ 
+ 
+ 
+
+
+ 
+
+•	[2025/02/02 14:03:47] start training...: This is a timestamp showing when the training started.
+•	Config (path: configs/culane.py): { ... }: This prints the configuration settings being used for the training run. These settings are loaded from your configs/culane.py file. It's important to review these settings to ensure they are what you intended (dataset path, batch size, learning rate, etc.).
+•	ResNet18 Weights Warning: The warnings about pretrained being deprecated and arguments other than a weight enum are related to how you're loading the ResNet18 backbone. While your code is still working because it defaults to ResNet18_Weights.IMAGENET1K_V1, it's best to update it to avoid these warnings in the future. Replace pretrained=True with weights='DEFAULT' or weights=ResNet18_Weights.IMAGENET1K_V1.
+•	2778: This likely represents the total number of training images or batches in one epoch (complete pass through the entire dataset).
+•	100%|█| 2778/2778 [2:25:46<00:00, 3.15s/it, ...]: This is a progress bar. It shows that one epoch (all 2778 images/batches) has been completed.
+o	2:25:46: This is the total time it took to complete one epoch (2 hours, 25 minutes, 46 seconds).
+o	3.15s/it: This is the average time it took to process one iteration (batch) – 3.15 seconds per iteration.
+o	iou=0.523, loss=1.425, net_time=4.957, top1=0.576, top2=0.684: These are the metrics being reported at the end of the epoch: 
+	iou: Intersection over Union (a common metric for lane detection).
+	loss: The training loss. This should generally decrease over epochs.
+	net_time: Time spent in the network computation.
+	top1, top2: Likely other accuracy metrics.
+•	45%|████████████████████████████████ ...: This is the progress bar for the current epoch (the one that is still in progress). It's showing that 45% of the current epoch is complete.
+Key Observations and Recommendations:
+1.	Training is Happening: The fact that you are seeing progress bars and metrics being reported means your setup is fundamentally correct.
+2.	Monitor Loss and Metrics: The most important thing is to keep an eye on the loss value. It should be decreasing over epochs. If it's not, or if it's fluctuating wildly, you might have a problem. Also, watch the IoU and other metrics. They should be improving.
+3.	TensorBoard (Highly Recommended): If the code supports it, using TensorBoard will make it much easier to visualize the training progress. It provides interactive graphs of loss, metrics, and other information.
+4.	ResNet18 Weights Warning: Fix the ResNet18 weights warning by changing pretrained=True to weights='DEFAULT' or weights=ResNet18_Weights.IMAGENET1K_V1.
+5.	Training Time: Training lane detection models can take a long time. Be patient. It's good practice to run multiple training runs with different random seeds, hyperparameters or even with different models.
+6.	Checkpointing: Ensure that your training script is saving checkpoints regularly. This is extremely important in case of interruptions.
+
+
+
+
+UltraFast Detection Final out
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo.py --config ./config/culane.py
+usage: demo.py [-h] [--local_rank LOCAL_RANK] [--dataset DATASET] [--data_root DATA_ROOT] [--epoch EPOCH] [--batch_size BATCH_SIZE]
+               [--optimizer OPTIMIZER] [--learning_rate LEARNING_RATE] [--weight_decay WEIGHT_DECAY] [--momentum MOMENTUM] [--scheduler SCHEDULER]
+               [--steps STEPS [STEPS ...]] [--gamma GAMMA] [--warmup WARMUP] [--warmup_iters WARMUP_ITERS] [--backbone BACKBONE]
+               [--griding_num GRIDING_NUM] [--use_aux USE_AUX] [--sim_loss_w SIM_LOSS_W] [--shp_loss_w SHP_LOSS_W] [--note NOTE] [--log_path LOG_PATH]
+               [--finetune FINETUNE] [--resume RESUME] [--test_model TEST_MODEL] [--test_work_dir TEST_WORK_DIR] [--num_lanes NUM_LANES] [--auto_backup]
+               config
+demo.py: error: unrecognized arguments: --config
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo.py config/culane.py
+Traceback (most recent call last):
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\demo.py", line 15, in <module>
+    args, cfg = merge_config()
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\utils\common.py", line 53, in merge_config
+    cfg = Config.fromfile(args.config)
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\utils\config.py", line 160, in fromfile
+    cfg_dict, cfg_text = Config._file2dict(filename)
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\utils\config.py", line 87, in _file2dict
+    shutil.copyfile(filename,
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.9_3.9.3568.0_x64__qbz5n2kfra8p0\lib\shutil.py", line 264, in copyfile
+    with open(src, 'rb') as fsrc:
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Projects\\LKA3\\Ultra-Fast-Lane-Detection\\config\\culane.py'
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo.py configs/culane.py
+start testing...
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+test0_normal.avi
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 9621/9621 [05:14<00:00, 30.55it/s]
+test1_crowd.avi
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 8113/8113 [10:08<00:00, 13.32it/s]
+test2_hlight.avi
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 486/486 [00:45<00:00, 10.72it/s]
+test3_shadow.avi
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 930/930 [01:25<00:00, 10.93it/s]
+test4_noline.avi
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 4067/4067 [05:20<00:00, 12.70it/s]
+test5_arrow.avi
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 890/890 [01:07<00:00, 13.15it/s]
+test6_curve.avi
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 422/422 [00:17<00:00, 24.37it/s]
+test7_cross.avi
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3122/3122 [03:35<00:00, 14.52it/s]
+test8_night.avi
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7029/7029 [07:37<00:00, 15.35it/s]
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo2.py configs/culane.py
+Start testing...
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\demo2.py", line 82, in <module>
+    frame_tensor = img_transforms(resized_frame).unsqueeze(0).cuda()
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\transforms\transforms.py", line 95, in __call__
+    img = t(img)
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torch\nn\modules\module.py", line 1739, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torch\nn\modules\module.py", line 1750, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\transforms\transforms.py", line 354, in forward
+    return F.resize(img, self.size, self.interpolation, self.max_size, self.antialias)
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\transforms\functional.py", line 465, in resize
+    _, image_height, image_width = get_dimensions(img)
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\transforms\functional.py", line 80, in get_dimensions
+    return F_pil.get_dimensions(img)
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\transforms\_functional_pil.py", line 31, in get_dimensions
+    raise TypeError(f"Unexpected type {type(img)}")
+TypeError: Unexpected type <class 'numpy.ndarray'>
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo2.py configs/culane.py
+Start testing...
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Error: Could not open video C:\Projects\LKA3\test_videos\custom_video.mp4
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo2.py configs/culane.py
+Start testing...
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\demo2.py", line 116, in <module>
+    out.write(resized_frame)
+AttributeError: 'Tensor' object has no attribute 'write'
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo2.py configs/culane.py
+Start testing...
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\demo2.py", line 119, in <module>
+    out.write(resized_frame_bgr)
+AttributeError: 'Tensor' object has no attribute 'write'
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo2.py configs/culane.py
+Start testing...
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\demo2.py", line 122, in <module>
+    out.write(vis_frame_bgr)
+AttributeError: 'Tensor' object has no attribute 'write'
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo2.py configs/culane.py
+Start testing...
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Error: Could not open video C:\Projects\LKA3\test_videos\custom_video.mp4
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo2.py configs/culane.py
+Start testing...
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\demo2.py", line 127, in <module>
+    out.write(vis_frame_bgr)
+AttributeError: 'Tensor' object has no attribute 'write'
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo2.py configs/culane.py
+Start testing...
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\demo2.py", line 127, in <module>
+    out.write(vis_frame_bgr)
+AttributeError: 'Tensor' object has no attribute 'write'
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo2.py configs/culane.py
+Start testing...
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Traceback (most recent call last):
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\demo2.py", line 123, in <module>
+    out.write(vis_frame_bgr)
+AttributeError: 'Tensor' object has no attribute 'write'
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo2.py configs/culane.py
+Traceback (most recent call last):
+  File "C:\Projects\LKA3\Ultra-Fast-Lane-Detection\demo2.py", line 21, in <module>
+    out_video = cv2.VideoWriter(output_video_path, fourcc, fps, (target_width, target_height)) # Renamed to out_video
+NameError: name 'fps' is not defined
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>python demo2.py configs/culane.py
+Start testing...
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+C:\Projects\LKA3\Ultra-Fast-Lane-Detection\ufld_env3.9\lib\site-packages\torchvision\models\_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+Processed frame 4663
+Processed frame 4664
+Finished processing. Output saved to C:\Projects\LKA3\output_video.avi
+
+(ufld_env3.9) C:\Projects\LKA3\Ultra-Fast-Lane-Detection>^A^A
