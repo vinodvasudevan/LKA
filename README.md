@@ -1,4 +1,4 @@
-# Ultra-Fast-Lane-Detection  ( Modified code to support latest windows- Trained with different route - Cov- Warwick)
+# Ultra-Fast-Lane-Detection  ( Modified code/Windows 11- Trained with different route - Coventry- Warwick)
 PyTorch implementation of the paper "[Ultra Fast Structure-aware Deep Lane Detection](https://arxiv.org/abs/2004.11757)".
 
 **\[July 18, 2022\] Updates: The new version of our method has been accepted by TPAMI 2022. Code is available [here](https://github.com/cfzd/Ultra-Fast-Lane-Detection-v2)**.
