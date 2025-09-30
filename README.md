@@ -20,7 +20,7 @@ Caffe model and prototxt can be found [here](https://github.com/Jade999/caffe_la
 alt="Demo" width="240" height="180" border="10" /></a>
 
 
-# Install
+# Install  ( Please read the LKAS.doc- Step by Step to install - in Windows 11 PC)
 Please see [INSTALL.md](./INSTALL.md)
 
 # Get started
